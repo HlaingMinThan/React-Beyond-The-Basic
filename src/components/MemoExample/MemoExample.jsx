@@ -5,6 +5,10 @@ export default function MemoExample() {
   let [count, setCount] = useState(0);
   let [anotherCount, setAnotherCount] = useState(0);
 
+  let increaseByTwo = () => {
+    setCount((prev) => prev + 2);
+  };
+
   return (
     <div className="app">
       <div>
@@ -19,6 +23,11 @@ export default function MemoExample() {
         </div>
         <h1 className="text-2xl"> Another Count :{anotherCount}</h1>
         <div className="justify-center space-x-4 my-3">
+          {/* 
+            when we increase the anotherCount,
+            it'll pass again increaseByTwo(reference type) to child component 
+            and rerender again
+          */}
           <button
             className="bg-red-400 px-4 py-2 rounded-md "
             onClick={() => setAnotherCount((prev) => prev + 1)}
@@ -27,7 +36,7 @@ export default function MemoExample() {
           </button>
         </div>
       </div>
-      <Child count={count} />
+      <Child count={count} increaseByTwo={increaseByTwo} />
     </div>
   );
 }
