@@ -1,7 +1,8 @@
 import './App.css'
-import Counter from './components/counter/Counter'
+import Login from './Auth/Login';
+
 function App() {
-  return <Counter></Counter>
+  return <Login></Login>
 }
 
 export default App;
