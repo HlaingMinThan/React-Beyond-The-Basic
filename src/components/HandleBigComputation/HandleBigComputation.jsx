@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 
 export default function HandleBigComputation() {
   console.log("component start rendering");
   let [count, setCount] = useState(0);
   let [arr, setArr] = useState([1, 2, 3]);
+  const memoizedValue = useMemo(calcuateBigComputation, [arr]);
 
   function calcuateBigComputation() {
     console.log("calculation big computation task");
@@ -32,8 +33,16 @@ export default function HandleBigComputation() {
 
       <div>
         <h1 className="text-3xl">
-          Big Computation work is here : {calcuateBigComputation()}
+          Big Computation work is here : {memoizedValue}
         </h1>
+        <div className="flex justify-center">
+          <button
+            className="bg-red-400 px-4 py-2 rounded-md text-white"
+            onClick={() => setArr([1, 2, 3, 4])}
+          >
+            Compute new big task again
+          </button>
+        </div>
       </div>
     </div>
   );
