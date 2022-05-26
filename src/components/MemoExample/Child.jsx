@@ -1,6 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 
-export default function Child() {
+function Child({ count }) {
   console.log("child component rendering");
-  return <div>child component</div>;
+  return <div>child component : {count}</div>;
 }
+
+export default memo(Child);
