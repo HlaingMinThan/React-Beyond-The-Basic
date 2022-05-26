@@ -1,8 +1,8 @@
 import './App.css'
-import HandleBigComputation from './components/HandleBigComputation/HandleBigComputation.jsx';
+import MemoExample from './components/MemoExample/MemoExample.jsx';
 
 function App() {
-  return <HandleBigComputation />
+  return <MemoExample />
 }
 
 export default App;
