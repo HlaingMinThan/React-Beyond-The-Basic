@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Child from "./Child";
 export default function MemoExample() {
   console.log("Parent component start rendering");
@@ -8,7 +8,7 @@ export default function MemoExample() {
   let increaseByTwo = () => {
     setCount((prev) => prev + 2);
   };
-
+  let memorizedCallback = useCallback(increaseByTwo, []);
   return (
     <div className="app">
       <div>
@@ -25,8 +25,6 @@ export default function MemoExample() {
         <div className="justify-center space-x-4 my-3">
           {/* 
             when we increase the anotherCount,
-            it'll pass again increaseByTwo(reference type) to child component 
-            and rerender again
           */}
           <button
             className="bg-red-400 px-4 py-2 rounded-md "
@@ -36,7 +34,10 @@ export default function MemoExample() {
           </button>
         </div>
       </div>
-      <Child count={count} increaseByTwo={increaseByTwo} />
+      {/* 
+        it'll pass again memorizedCallback to child component  and only rerender if it needs
+      */}
+      <Child count={count} increaseByTwo={memorizedCallback} />
     </div>
   );
 }
