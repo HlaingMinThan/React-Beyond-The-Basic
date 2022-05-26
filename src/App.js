@@ -1,8 +1,8 @@
 import './App.css'
-import Login from './Auth/Login.jsx';
+import HandleBigComputation from './components/HandleBigComputation/HandleBigComputation.jsx';
 
 function App() {
-  return <Login></Login>
+  return <HandleBigComputation />
 }
 
 export default App;
